@@ -1,0 +1,9 @@
+This repository includes my home use tools.
+
+1.encode.pl
+
+This scpript is wrapper of ffmpeg.
+
+SAMPLE:
+$ ls /video/* > tslist
+$ nohup perl encode.pl --tslist tslist > encode.log 
