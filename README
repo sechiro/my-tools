@@ -6,4 +6,4 @@ This scpript is wrapper of ffmpeg.
 
 SAMPLE:
 $ ls /video/* > tslist
-$ nohup perl encode.pl --tslist tslist > encode.log 
+$ nohup perl encode.pl --tslist tslist > encode.log &
