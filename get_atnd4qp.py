@@ -11,7 +11,7 @@ except ImportError:
 ATND_EVENT_URL='http://api.atnd.org/events/?format=json&count=%s&owner_id=%s'
 ATND_USERS_URL='http://api.atnd.org/events/users/?format=json&count=%s&event_id=%s'
 iara = 7710 # リーダーのATND ID
-count = 50  # 検索上限数
+count = 100  # 検索上限数
 
 def main():
     qpstudies = get_qpid()
@@ -41,7 +41,7 @@ def main():
                 total_users.append( (user_info[0],user_info[1]) ) # delete status
                     
     print u'================================\n' \
-        + u'これまでの累計参加者\n' \
+        + u'これまでの累計参加者 (total: ' + str( len(total_users) ) + '\n' \
         + u'================================'
 
     print u'=====================\n' \
