@@ -11,7 +11,7 @@ except ImportError:
 ATND_EVENT_URL='http://api.atnd.org/events/?format=json&count=%s&owner_id=%s'
 ATND_USERS_URL='http://api.atnd.org/events/users/?format=json&count=%s&event_id=%s'
 iara = 7710 # リーダーのATND ID
-count = 100  # 検索上限数(Max:100)
+count = 100  # 検索上限イベント数(Max:100)
 
 def main():
     qpstudies = get_qpid()
