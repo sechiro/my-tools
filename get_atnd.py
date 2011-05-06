@@ -15,15 +15,15 @@ def main():
     """ qpstudy参加者一覧出力（中身はiaraさんが立てたATNDイベントのユーザ取得） """
     #get_qp()
 
-    """ キーワード検索の場合は、文字列を直接、もしくはリストで渡す """
-    get_users_by_keyword(keyword='メイド', keyword_or=['擬人化','サーバ']) # keywordはURLにこのまま代入するので、Unicodeにしない。
+    """ キーワード検索の場合は文字列をカンマ区切り、もしくは、リストで渡す """
+    get_users_by_keyword(keyword='メイド,喫茶', keyword_or=['サーバ','擬人化']) # keywordはURLにこのまま代入するので、Unicodeにしない。
 
 
 def get_qp():
     """ Sample of get_users_in_events """
     atnd = atnd_api()
     atnd.count = 100 # 取得イベント上限数
-    atnd.owner_id = 7710 # qpstudyのリーダー、iaraさんのATND ID
+    atnd.owner_id = 7710 # qpstudyのリーダー、iaraさんのATND ID。カンマ区切りで複数渡せる。
     events = atnd.get_users_in_events()
     print u'================================\n' \
         + u'以下のイベントの参加者を取得します。\n' \
