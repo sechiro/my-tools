@@ -10,7 +10,7 @@ except ImportError:
 
 
 def main():
-    """ Class Usege Sample"""
+    """ Class Usage Sample"""
 
     """ qpstudy参加者一覧出力（中身はiaraさんが立てたATNDイベントのユーザ取得） """
     #get_qp()
