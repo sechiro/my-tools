@@ -2,14 +2,12 @@
 # -*- coding: utf-8 -*-
 import tweepy, sys, re
 
-""" 操作対象を持っているアカウント名を指定
-アプリ（「ほむにゃん♪」）とアカウントがひもづいているので、
-そのセットで切り替える。
-"""
 
-account = 'sechiro'         # 投稿先アカウント
-conf_file = 'homnyan.conf'
+""" 指定したアカウントの発言をタブ区切りで出力 """
+account = 'sechiro'         # データ取得アカウント
+conf_file = 'homnyan.conf'  # confはアップしていません。
 number = 3200
+is_monitor = 0
 
 def main():
     f = open(conf_file, "r")
@@ -46,9 +44,9 @@ def main():
     for p in tweepy.Cursor(api.user_timeline,account).items(number):
         text = re.sub(r'\r|\n','', unicode(p.text)) 
         output = str(p.user.id) + '\t' + p.user.screen_name + '\t' + text + '\t' + str(p.created_at)       
-        print output
+        if is_monitor == 1:
+            print output
         f.write(output.encode('utf-8') + '\n')
-
     f.close
 
 

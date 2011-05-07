@@ -8,7 +8,7 @@ import tweepy, sys, re
 """
 
 account = 'sechiro'         # 投稿先アカウント
-conf_file = 'homnyan.conf'
+conf_file = 'homnyan.conf'  # confはアップしていません。
 
 def main():
     f = open(conf_file, "r")

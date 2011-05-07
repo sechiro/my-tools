@@ -10,7 +10,7 @@ import tweepy, sys, re, os
 account = 'sechiro'         # リストを持っているアカウント
 list_file = 'list.txt'      # Twitter ID一覧（各行にアカウント名）
 list_name = u'ほむほむ'      # 追加対象のリスト名
-conf_file = 'homnyan.conf'
+conf_file = 'homnyan.conf'  # confはアップしていません。
 
 
 def main():
