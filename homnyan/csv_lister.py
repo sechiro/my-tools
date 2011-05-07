@@ -6,8 +6,12 @@ import tweepy, sys, re
 """ 指定したアカウントの発言をタブ区切りで出力 """
 account = 'sechiro'         # データ取得アカウント
 conf_file = 'homnyan.conf'  # confはアップしていません。
-number = 3200
-is_monitor = 0
+number = 3200               # 出力POST数
+is_monitor = 0              # 画面出力の有無
+
+# ほむにゃん♪のアプリ側キー
+consumer_key = "ZqI1Dufey1tRzQDqHnZwew"
+consumer_secret = "ljD03gFAEhpjrFciD4RKJMjE4mpVgQjjwxg2puS1ak"
 
 def main():
     f = open(conf_file, "r")
@@ -26,10 +30,8 @@ def main():
     for conf in confs:
         params = conf.split(',')
         if params[0] == account:    
-            consumer_key = params[1]
-            consumer_secret = params[2]
-            access_key = params[3]
-            access_secret = params[4]
+            access_key = params[1]
+            access_secret = params[2]
 
     # create OAuth handler                                                      
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret)                   

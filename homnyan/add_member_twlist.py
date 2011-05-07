@@ -12,6 +12,9 @@ list_file = 'list.txt'      # Twitter ID一覧（各行にアカウント名）
 list_name = u'ほむほむ'      # 追加対象のリスト名
 conf_file = 'homnyan.conf'  # confはアップしていません。
 
+# ほむにゃん♪のアプリ側キー
+consumer_key = "ZqI1Dufey1tRzQDqHnZwew"
+consumer_secret = "ljD03gFAEhpjrFciD4RKJMjE4mpVgQjjwxg2puS1ak"
 
 def main():
     f = open(conf_file, "r")
@@ -30,10 +33,8 @@ def main():
     for conf in confs:
         params = conf.split(',')
         if params[0] == account:    
-            consumer_key = params[1]
-            consumer_secret = params[2]
-            access_key = params[3]
-            access_secret = params[4]
+            access_key = params[1]
+            access_secret = params[2]
             
     
     # create OAuth handler                                                      
