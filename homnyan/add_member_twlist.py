@@ -23,7 +23,6 @@ def main():
             continue
         
         conf = line.rstrip()
-        #print member
         confs.append(conf)
         line = f.readline()
     f.close
