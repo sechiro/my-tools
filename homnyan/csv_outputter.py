@@ -4,11 +4,13 @@ import tweepy, sys, re
 
 
 """ 指定したアカウントの発言をタブ区切りで出力 """
-account = 'sechiro'         # データ取得アカウント
+account = 'sechiro'         # 自分のアカウント
+target_user = 'sechirro'    # データ取得対象アカウント
 conf_file = 'homnyan.conf'  # confはアップしていません。
 number = 3200               # 出力POST数(Max: 3200)
 is_monitor = 0              # 画面出力の有無
 since_id = 0                # このID以降のPOSTを取得します。
+output_file = target_user + '.csv'
 
 # ほむにゃん♪のアプリ側キー
 consumer_key = "ZqI1Dufey1tRzQDqHnZwew"
@@ -41,10 +43,10 @@ def main():
     # create API                                                                
     api = tweepy.API(auth_handler=auth)
 
-    f = open("csvoutput.txt", "w")
+    f = open(output_file, "w")
     print 'Start writing.'
     
-    for p in tweepy.Cursor(api.user_timeline,account,since_id).items(number):
+    for p in tweepy.Cursor(api.user_timeline,target_user,since_id).items(number):
         text = re.sub(r'\r|\n','', unicode(p.text))
         #print dir(p)
         output = str(p.user.id) + '\t' + p.user.screen_name + '\t' + text + \
