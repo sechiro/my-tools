@@ -6,8 +6,9 @@ import tweepy, sys, re
 """ 指定したアカウントの発言をタブ区切りで出力 """
 account = 'sechiro'         # データ取得アカウント
 conf_file = 'homnyan.conf'  # confはアップしていません。
-number = 3200               # 出力POST数
+number = 3200               # 出力POST数(Max: 3200)
 is_monitor = 0              # 画面出力の有無
+since_id = 0                # このID以降のPOSTを取得します。
 
 # ほむにゃん♪のアプリ側キー
 consumer_key = "ZqI1Dufey1tRzQDqHnZwew"
@@ -43,9 +44,11 @@ def main():
     f = open("csvoutput.txt", "w")
     print 'Start writing.'
     
-    for p in tweepy.Cursor(api.user_timeline,account).items(number):
-        text = re.sub(r'\r|\n','', unicode(p.text)) 
-        output = str(p.user.id) + '\t' + p.user.screen_name + '\t' + text + '\t' + str(p.created_at)       
+    for p in tweepy.Cursor(api.user_timeline,account,since_id).items(number):
+        text = re.sub(r'\r|\n','', unicode(p.text))
+        #print dir(p)
+        output = str(p.user.id) + '\t' + p.user.screen_name + '\t' + text + \
+                 '\t' + str(p.created_at) + '\t' + str(p.id) + '\t' + p.source
         if is_monitor == 1:
             print output
         f.write(output.encode('utf-8') + '\n')
